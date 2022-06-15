@@ -3,9 +3,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
-
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,10 +28,8 @@ Route::prefix( 'auth')->group(function() {
     Route::get('/user', [AuthController::class, 'getCurrentUser'])->middleware('auth:sanctum');
 });
 
-Route::post('/user', [UserController::class, 'store']);
-Route::post('/user/login', [UserController::class, 'login']);
-Route::get('user/logout', [UserController::class, 'logout']);
-Route::get('/user/check', [UserController::class, 'check']);
+Route::post('/users', [UserController::class, 'store']);
 
 // API only, the SPA front end will take care of the views
 Route::apiResource('posts', PostController::class)->middleware('auth:sanctum');
+Route::apiResource('comments', CommentController::class)->middleware('auth:sanctum');
