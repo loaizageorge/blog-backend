@@ -18,4 +18,14 @@ class Post extends Model
     protected $casts = [
         'created_at' => 'date:Y-m-d H:m'
     ];
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

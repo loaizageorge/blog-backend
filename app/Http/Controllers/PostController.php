@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PostResource;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StorePostRequest;
 use App\Models\Post;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -16,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        return Post::all();
+        return PostResource::collection(Post::all());
     }
 
     /**
@@ -40,6 +40,8 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+        $post->load('comments');
+        return new PostResource($post);
         return $post;
     }
 
@@ -58,7 +60,7 @@ class PostController extends Controller
 
         $validated = $request->validated();
         $post->update($validated);
-        return $post;
+        return new PostResource($post);
     }
 
     /**
@@ -72,6 +74,9 @@ class PostController extends Controller
         if ($post->user_id !== Auth::user()->id) {
             return response(['errors' => 'Forbidden'], 403);
         }
-        return $post->delete();
+        $post->delete();
+
+        // nothing to return here
+        return response()->noContent();
     }
 }

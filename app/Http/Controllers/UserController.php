@@ -12,7 +12,6 @@ class UserController extends Controller
     {
         $validated = $request->validated();
         $validated['password'] = Hash::make($request->password);
-
         return User::create($validated);
     }
 }

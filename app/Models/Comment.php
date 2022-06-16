@@ -20,4 +20,14 @@ class Comment extends Model
         'created_at' => 'date:Y-m-d H:m',
         'updated_at' => 'date:Y-m-d H:m',
     ];
+
+    public function post()
+    {
+        return $this->belongsTo(Post::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

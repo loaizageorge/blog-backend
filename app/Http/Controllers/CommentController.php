@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCommentRequest;
+use App\Http\Resources\CommentResource;
 use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +16,7 @@ class CommentController extends Controller
      */
     public function index()
     {
-        return Comment::all();
+        return CommentResource::collection(Comment::all());
     }
 
     /**
@@ -39,7 +40,7 @@ class CommentController extends Controller
      */
     public function show(Comment $comment)
     {
-        return $comment;
+        return new CommentResource($comment);
     }
 
     /**
