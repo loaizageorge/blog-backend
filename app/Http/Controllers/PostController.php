@@ -11,12 +11,11 @@ class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function index()
     {
-        return PostResource::collection(Post::all());
+        return PostResource::collection(Post::with('comments')->get());
     }
 
     /**
@@ -34,23 +33,22 @@ class PostController extends Controller
 
     /**
      * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Post $post
+     * @return PostResource
      */
     public function show(Post $post)
     {
         $post->load('comments');
         return new PostResource($post);
-        return $post;
     }
+
 
     /**
      * Update the specified resource in storage.
      * Only the post creator should be allowed to update the post
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param StorePostRequest $request
+     * @param Post $post
+     * @return PostResource|\Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
     public function update(StorePostRequest $request, Post $post)
     {

@@ -18,9 +18,8 @@ class AuthController extends Controller
 
         // this token should be stored on the front end and passed along in the header: 'Authorization' => Bearer.$token
         if ($authenticated) {
-            $user = User::where('email', $request->email)->first();
-            $token = $user->createToken('token')->plainTextToken;
-            return response()->json(['token' => $token]);
+            $request->session()->regenerate();
+            return response()->json(['message' => 'Successfully logged in']);
         }
         return response(['errors' => 'Login failed. Please check your credentials and try again.'], 401);
 
