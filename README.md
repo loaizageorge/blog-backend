@@ -8,9 +8,13 @@
 7. All routes live in the api.php directory.
 
 <h2>Some notes</h2>
+
 - Laravel has a lot of boilerplate, essentially all the code I wrote can be found in: Models/, routes/api.php, Http/Controllers. Http/Resources, and Http/Requests.
+
 - Authentication is handled with Laravel's Sanctum. I haven't used it until now but it is very simple to use.
+
 - There are 3 models that make up this backend, Posts, Comments, and Users. They all have full CRUD support, except for Users, which can only be created.
+
 - Basic validation is handled via api Laravel's Form Requests.
 ***
 
