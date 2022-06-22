@@ -1,0 +1,428 @@
+{
+	"info": {
+		"_postman_id": "d1c851be-5eb4-4c21-bcc5-25ac363d8ec3",
+		"name": "Blog",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "test",
+									"type": "default"
+								},
+								{
+									"key": "body",
+									"value": "test",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api}}/posts",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"updated\",\n    \"body\": \"updated\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/posts/10",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"posts",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/posts",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "8|4qWtqtoUbrD8d6t7AhS6JKww8RhuHMCljVr9VtCc",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"body\": \"heyo\",\n    \"post_id\": 6\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/comments",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/comments",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"body\": \"update\",\n    \"post_id\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/comments/1",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"comments",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/comments/1",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"comments",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "8|4qWtqtoUbrD8d6t7AhS6JKww8RhuHMCljVr9VtCc",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"email@test.com\",\n    \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/auth/login",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Login",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "2|C6oQuKqHJL5aSfcLl415zdfBpyBZ3wEpk9Gh0hNt",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "loaizageorge@gmail.com",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "test",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api}}/user",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Users",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "en-US,en;q=0.9,es;q=0.8"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "Phpstorm-ade66e89=e51c9090-ddd1-4cf3-a5e9-c056eb047f5a; XSRF-TOKEN=eyJpdiI6IkNBeFFwQlRUU241QzM1K2RxVjc4SFE9PSIsInZhbHVlIjoidi9LRllERjVSVG9pcjJDeXRoZ1dRcGp6K1gvSHkxbXFaR2ozdkJQbk5QMDhEUlVKVlZKNHIzeHo1aGtTRlFDblMxRFdaUW9ESG9UQ0VMOUVXeVJXcDdodXBRVVlCeWF3ckdjMWloY1g1VE4vVHBCQm5MZ2lrVklMeS9qY0J1eW4iLCJtYWMiOiIxYzNiZTE0YjE1MjY4OTEyNmFkZjgxZWM5ZGVkNGE2OTEzNzJjZTE1NzMyNTQyZjIxYWU1MzIwYzE0N2E4ZjUyIiwidGFnIjoiIn0%3D; laravel_session=eyJpdiI6IlVES0JDclhLZmhoc2pETm9RTUtWVWc9PSIsInZhbHVlIjoiVUhXRFBPSkhrTkErM3hkT3IzajUyczBocnQvWUpYZVhxK2JHcGdqSFNvNWlPTnQyVHQvcWEvRXgydHROc2lKRy9Udys5dGprbW82YUZCV2tJV0Mzcjl6OThvaTlFRStrT08zR3kycldkM1ByN3MxMXJJNkkxVVZQQkVmVTdHT2MiLCJtYWMiOiI5YmJkZGIxOTVlZTdiNDdlZWJlY2Q1MjNhMWMyNzEzNWEwYmU1NmQ3OTdjNzM0MWFiNzhhZDAzNzcyM2FkNTM5IiwidGFnIjoiIn0%3D"
+							},
+							{
+								"key": "DNT",
+								"value": "1"
+							},
+							{
+								"key": "Origin",
+								"value": "http://localhost:63342"
+							},
+							{
+								"key": "Referer",
+								"value": "http://localhost:63342/"
+							},
+							{
+								"key": "Sec-Fetch-Dest",
+								"value": "empty"
+							},
+							{
+								"key": "Sec-Fetch-Mode",
+								"value": "cors"
+							},
+							{
+								"key": "Sec-Fetch-Site",
+								"value": "same-site"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1"
+							},
+							{
+								"key": "X-XSRF-TOKEN",
+								"value": "eyJpdiI6IkNBeFFwQlRUU241QzM1K2RxVjc4SFE9PSIsInZhbHVlIjoidi9LRllERjVSVG9pcjJDeXRoZ1dRcGp6K1gvSHkxbXFaR2ozdkJQbk5QMDhEUlVKVlZKNHIzeHo1aGtTRlFDblMxRFdaUW9ESG9UQ0VMOUVXeVJXcDdodXBRVVlCeWF3ckdjMWloY1g1VE4vVHBCQm5MZ2lrVklMeS9qY0J1eW4iLCJtYWMiOiIxYzNiZTE0YjE1MjY4OTEyNmFkZjgxZWM5ZGVkNGE2OTEzNzJjZTE1NzMyNTQyZjIxYWU1MzIwYzE0N2E4ZjUyIiwidGFnIjoiIn0"
+							},
+							{
+								"key": "mode",
+								"value": "cors"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstname\": \"George\",\n    \"lastname\": \"Loaiza\",\n    \"email\": \"hiya@test.com\",\n    \"password\": \"password\",\n    \"passwordCheck\": \"password\"\n}"
+						},
+						"url": {
+							"raw": "{{api}}/users",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "api",
+			"value": "localhost/api/",
+			"type": "default"
+		}
+	]
+}
